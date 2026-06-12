@@ -24,7 +24,7 @@ public class Main extends Application{
         Scene escena = new Scene(raiz);
         
         escenarioPrincipal.setTitle("Calculadora de Angel");
-       escenarioPrincipal.setScene(escena); 
+        escenarioPrincipal.setScene(escena); 
         escenarioPrincipal.show();
         
         
