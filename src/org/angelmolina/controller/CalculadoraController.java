@@ -1,13 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package org.angelmolina.controller;
 
-/**
- *
- * @author informatica
- */
+package org.angelmolina.controller;
+import javafx.scene.control.Label;
+
+
 public class CalculadoraController {
     
+    private String opcion1 = "";
+    private String operador = "";
+    private String opcion2 = "";
+    private boolean calculoTerminado = true;
+    
+    public CalculadoraController(){
+        
+    }
+    public void procesoDeEntrada(String entrada,Label pantalla){
+        if(entrada.matches("[0-9]"))
+            if(operador.isEmpty()){
+                opcion1 += entrada;
+            }
+    }
+
+private void actualizarPantalla(Label pantalla){
+if (operador.isEmpty()){
+    pantalla.setText(opcion1);
 }
+
+}}
