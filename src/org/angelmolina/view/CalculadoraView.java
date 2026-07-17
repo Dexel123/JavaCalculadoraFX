@@ -16,20 +16,20 @@ public class CalculadoraView {
     private Label pantalla; 
     private GridPane cuadroBotones; 
     //controller
-    private CalculadoraController controlador;
-    
+    private CalculadoraController Controlador; 
     public CalculadoraView() {
-        
+        Controlador = new CalculadoraController(); 
         
         view = new VBox(15); 
         view.setPadding(new Insets(15)); 
         view.setAlignment(Pos.CENTER);
-        view.setStyle("-fx-background-color: #b0d32a;"); 
+        view.setStyle("-fx-background-color: #4E545C;"); 
         
         pantalla = new Label("0"); 
         pantalla.setFont(Font.font("Consolas", FontWeight.BOLD, 40));
         pantalla.setAlignment(Pos.CENTER_RIGHT); 
         pantalla.setPrefSize(235, 50); 
+        pantalla.setStyle("-fx-background-color: #F5F7FA;"); 
         
         cuadroBotones = new GridPane(); 
         cuadroBotones.setHgap(10);//INTERLINEADO ENTRE ELEMENTOS DE LA CUADRICULA
@@ -51,7 +51,7 @@ public class CalculadoraView {
         Button btnSiete = crearBoton("7");
         Button btnOcho = crearBoton("8");
         Button btnNueve = crearBoton("9");
-        Button btnPor = crearBoton("x");
+        Button btnPor = crearBoton("*");
         //Segunda Fila
         Button btnUno = crearBoton("1");
       
@@ -102,20 +102,20 @@ public class CalculadoraView {
         Button btn = new Button(texto);
         btn.setPrefSize(50, 50);
         
-        btn.setStyle("-fx-background-color: #6B8E23; -fx-text-fill:white; -ft-background-radius:5px; -fx-cursor: hand;");
+        btn.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black; -ft-background-radius:5px; -fx-cursor: hand;");
  
         
         btn.setOnMousePressed(e -> {
-        btn.setStyle("-fx-background-color: " + "#A1B6C3"+ "; -fx-text-fill:white; -ft-background-radops:5px");
+        btn.setStyle("-fx-background-color: " + "#A1B6C3"+ "; -fx-text-fill:black; -ft-background-radops:5px");
         btn.setTranslateY(2);
         });
         btn.setOnMouseReleased(e -> {
-            btn.setStyle("-fx-background-color: #6B8E23; -fx-text-fill:white; -ft-background-radops:5px");
+            btn.setStyle("-fx-background-color: #ffffff; -fx-text-fill:black; -ft-background-radops:5px");
             btn.setTranslateY(0);
             
              
         });
-         btn.setOnAction(e-> controlador.procesoDeEntrada(texto, pantalla));
+         btn.setOnAction(e-> Controlador.procesoDeEntrada(texto, pantalla));
         return btn;
         
     }
