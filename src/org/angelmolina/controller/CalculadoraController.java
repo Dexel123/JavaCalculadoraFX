@@ -17,10 +17,39 @@ public class CalculadoraController {
             pantalla.setText(""); 
         }
         
+        if (entrada.equals("CE")) {
+            if (!opcion2.isEmpty()) {
+                opcion2 = ""; 
+            } else {
+                opcion1 = ""; 
+            }
+            actualizarPantalla(pantalla);
+            return; 
+        }
+        
+          
+        if (entrada.equals("⌫") ) {   
+            if (!opcion2.isEmpty()) {
+                opcion2 = opcion2.substring(0, opcion2.length() - 1);
+            }         
+            else if (!operador.isEmpty()) {
+                operador = "";
+            }           
+            else if (!opcion1.isEmpty()) {
+                opcion1 = opcion1.substring(0, opcion1.length() - 1);
+            }           
+            actualizarPantalla(pantalla);
+            return;
+            
+            
+            
+        }
+        
         if (opcion1.equals("Error")) {
             opcion1 = "";
         }
-        //si ya se completo un calculo //reiniciar
+        
+        
         if (calculoTerminado &&( entrada.matches("[0-9]") || entrada.equals("."))){
             opcion1 = "";
             operador = "";
