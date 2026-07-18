@@ -14,7 +14,8 @@ public class CalculadoraController {
             opcion1 = "";
             operador = "";
             opcion2 = "";
-            pantalla.setText(""); 
+            actualizarPantalla(pantalla); 
+            return;
         }
         
         if (entrada.equals("CE")) {
@@ -59,6 +60,24 @@ public class CalculadoraController {
         }
         
         
+        if (entrada.equals("+/-")) {
+            if (!opcion2.isEmpty()) {      
+                if (opcion2.startsWith("-")) {
+                    opcion2 = opcion2.substring(1);
+                } else {
+                    opcion2 = "-" + opcion2;
+                }
+            } else if (!opcion1.isEmpty() && !opcion1.equals("Error")) {
+              
+                if (opcion1.startsWith("-")) {
+                    opcion1 = opcion1.substring(1);
+                } else {
+                    opcion1 = "-" + opcion1;
+                }
+            }
+            actualizarPantalla(pantalla);
+            return; 
+        }
         
         
         if (opcion1.equals("Error")) {
@@ -172,7 +191,11 @@ public class CalculadoraController {
         pantalla.setText("Error");
         
          } else if (operador.isEmpty()) {
-           pantalla.setText(limpiarDecimal(opcion1));
+            if (opcion1.isEmpty()) {
+                pantalla.setText("0");
+            } else {
+                pantalla.setText(limpiarDecimal(opcion1));
+            }
                    
             } else if (operador.equals("√")) {
             pantalla.setText(operador + limpiarDecimal(opcion1));
@@ -188,7 +211,7 @@ public class CalculadoraController {
         if (numero == null || numero.isEmpty()) {
             return "";
         }
-        // Si el número termina en ".0", se lo cortamos por completo
+       
         if (numero.endsWith(".0")) {
             return numero.substring(0, numero.length() - 2);
         }
