@@ -40,10 +40,26 @@ public class CalculadoraController {
             }           
             actualizarPantalla(pantalla);
             return;
-            
-            
-            
+       
         }
+        
+        if (entrada.equals("ℼ")) {
+            if (calculoTerminado && operador.isEmpty()) {
+                opcion1 = "";
+                calculoTerminado = false;
+            }           
+            if (operador.isEmpty()) {
+                opcion1 = "3.14159265";
+            } 
+            else {
+                opcion2 = "3.14159265";
+            }          
+            actualizarPantalla(pantalla);
+            return; 
+        }
+        
+        
+        
         
         if (opcion1.equals("Error")) {
             opcion1 = "";
