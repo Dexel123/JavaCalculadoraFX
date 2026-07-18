@@ -55,19 +55,37 @@ public class CalculadoraController {
                 return;
             }
             
-            operador = entrada; 
+           
             if (entrada.equals("x²")) {
-                operador = "²";
+                operador = "²";   
+                
+           } else if (entrada.equals("%")) {
+                
+                if (operador.isEmpty()) {
+                    double num = Double.parseDouble(opcion1);
+                    opcion1 = String.valueOf(num / 100);
+                } else {
+                    if (!opcion2.isEmpty()) {
+                        double num1 = Double.parseDouble(opcion1);
+                        double num2 = Double.parseDouble(opcion2);
+                        if (operador.equals("+") || operador.equals("-")) {
+                            opcion2 = String.valueOf((num1 * num2) / 100);
+                        } else if (operador.equals("*") || operador.equals("÷")) {
+                            opcion2 = String.valueOf(num2 / 100);
+                        }
+                    }
+                }
             } else {
-                operador = entrada; 
+                
+                operador = entrada;
             }
             actualizarPantalla(pantalla);        
-        }else if(entrada.equals("=")) {
+        } else if(entrada.equals("=")) {
             if (operador.isEmpty()) return;
             if (opcion2.isEmpty() && !operador.equals("²") && !operador.equals("√")) return;
             
             try {
-            if(operador.equals("+")) {                  
+            if (operador.equals("+")) {                  
                 opcion1 = resultadoSuma(opcion1, opcion2);  
                 } else if (operador.equals("-")) {
             opcion1 = resultadoResta(opcion1, opcion2);
@@ -84,6 +102,9 @@ public class CalculadoraController {
                 } else if (operador.equals("√")) {
             opcion1 = resultadoRaiz(opcion1);
                 }
+             else if (operador.equals("%")) {
+                    opcion1 = String.valueOf(Double.parseDouble(opcion1) / 100);
+                }
       
                 } catch (Exception e) {
                 opcion1 = "Error";
@@ -97,7 +118,8 @@ public class CalculadoraController {
         
             
         }
-    }
+        }
+    
     
     
     private void actualizarPantalla(Label pantalla) {

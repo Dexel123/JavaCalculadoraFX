@@ -25,9 +25,9 @@ public class CalculadoraView {
         view.setStyle("-fx-background-color: #202020;"); 
         
         pantalla = new Label("0"); 
-        pantalla.setFont(Font.font("Consolas", FontWeight.BOLD, 40));
+        pantalla.setFont(Font.font("Consolas", FontWeight.BOLD, 50));
         pantalla.setAlignment(Pos.CENTER_RIGHT); 
-        pantalla.setPrefSize(235, 50); 
+        pantalla.setPrefSize(260, 55); 
         pantalla.setStyle("-fx-background-color: #202020; -fx-text-fill:white;"); 
         
         cuadroBotones = new GridPane(); 
