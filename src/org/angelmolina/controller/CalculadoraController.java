@@ -49,7 +49,7 @@ public class CalculadoraController {
  
             actualizarPantalla(pantalla);   
     
-        }else if(entrada.equals("+") || entrada.equals("-") || entrada.equals("*") || entrada.equals("÷")  || entrada.equals("x²") || entrada.equals("√")) {
+        }else if(entrada.equals("+") || entrada.equals("-") || entrada.equals("*") || entrada.equals("÷")  || entrada.equals("x²") || entrada.equals("√") || entrada.equals("%")) {
             
             if (opcion1.isEmpty()) {
                 return;

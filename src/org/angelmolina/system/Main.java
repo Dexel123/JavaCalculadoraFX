@@ -22,7 +22,7 @@ public class Main extends Application {
         //nodos
         Pane raiz = new Pane(calculadora.getView());
         //escena(nodoRaiz, ancho, largo)
-        Scene escena = new Scene(raiz, 266, 390); 
+        Scene escena = new Scene(raiz, 320, 420); 
         //cargar escena y mostrar escenario principal
         escenarioPrincipal.setTitle("Calculadora de Angel");
         escenarioPrincipal.setScene(escena); 
