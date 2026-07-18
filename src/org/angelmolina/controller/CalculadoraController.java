@@ -16,6 +16,10 @@ public class CalculadoraController {
             opcion2 = "";
             pantalla.setText(""); 
         }
+        
+        if (opcion1.equals("Error")) {
+            opcion1 = "";
+        }
         //si ya se completo un calculo //reiniciar
         if (calculoTerminado && entrada.matches("[0-9]")){
             opcion1 = "";
@@ -31,8 +35,14 @@ public class CalculadoraController {
             }
 
  
-            actualizarPantalla(pantalla);        
+            actualizarPantalla(pantalla);   
+    
         }else if(entrada.equals("+") || entrada.equals("-") || entrada.equals("*") || entrada.equals("÷")  || entrada.equals("x²") || entrada.equals("√")) {
+            
+            if (opcion1.isEmpty()) {
+                return;
+            }
+            
             operador = entrada; 
             if (entrada.equals("x²")) {
                 operador = "²";
@@ -41,6 +51,10 @@ public class CalculadoraController {
             }
             actualizarPantalla(pantalla);        
         }else if(entrada.equals("=")) {
+            if (operador.isEmpty()) return;
+            if (opcion2.isEmpty() && !operador.equals("²") && !operador.equals("√")) return;
+            
+            try {
             if(operador.equals("+")) {                  
                 opcion1 = resultadoSuma(opcion1, opcion2);  
                 } else if (operador.equals("-")) {
@@ -53,11 +67,15 @@ public class CalculadoraController {
             opcion1 = resultadoDivision(opcion1, opcion2);
             
                 } else if (operador.equals("²")) {
-            opcion1 = resultadoPotencia(opcion1,opcion2);
+            opcion1 = resultadoPotencia(opcion1);
             
                 } else if (operador.equals("√")) {
-            opcion1 = resultadoRaiz(opcion1,opcion2);
-        }
+            opcion1 = resultadoRaiz(opcion1);
+                }
+      
+                } catch (Exception e) {
+                opcion1 = "Error";
+            }
                 operador = "";
                 opcion2 = "";
                 calculoTerminado = true;
@@ -73,30 +91,34 @@ public class CalculadoraController {
     private void actualizarPantalla(Label pantalla) {
         if (operador.isEmpty()) {
             pantalla.setText(opcion1); 
+            
+            } else if (operador.equals("√")) {
+            pantalla.setText(operador + opcion1);
+            
         } else {
             pantalla.setText(opcion1 + "" + operador + "" + opcion2); 
         }
     }
     private String resultadoSuma(String numeroUno, String numeroDos) {
         String resultado; 
-        int datoUno = Integer.parseInt(opcion1); 
-        int datoDos = Integer.parseInt(opcion2);
+        int datoUno = Integer.parseInt(numeroUno); 
+        int datoDos = Integer.parseInt(numeroDos);
         int suma = datoUno + datoDos;         
         return resultado = String.valueOf(suma);
     }
 
     private String resultadoResta(String numeroUno, String numeroDos) {
         String resultado; 
-        int datoUno = Integer.parseInt(opcion1); 
-        int datoDos = Integer.parseInt(opcion2);
+        int datoUno = Integer.parseInt(numeroUno); 
+        int datoDos = Integer.parseInt(numeroDos);
         int resta = datoUno - datoDos;         
         return resultado = String.valueOf(resta);
         
     }
     private String resultadoMultiplicacion(String numeroUno, String numeroDos) {
         String resultado; 
-        int datoUno = Integer.parseInt(opcion1); 
-        int datoDos = Integer.parseInt(opcion2);
+        int datoUno = Integer.parseInt(numeroUno); 
+        int datoDos = Integer.parseInt(numeroDos);
         int multi = datoUno * datoDos;         
         return resultado = String.valueOf(multi);
         
@@ -112,7 +134,7 @@ public class CalculadoraController {
         return resultado = String.valueOf(division);
         
     }
-    private String resultadoPotencia(String numeroUno, String numeroDos) {
+    private String resultadoPotencia(String numeroUno) {
         String resultado; 
         int datoUno = Integer.parseInt(numeroUno); 
        
@@ -120,9 +142,9 @@ public class CalculadoraController {
         return resultado = String.valueOf(potencia);
         
     }
-    private String resultadoRaiz(String numeroUno, String numeroDos) {
+    private String resultadoRaiz(String numeroUno) {
         String resultado; 
-        int datoUno = Integer.parseInt(numeroUno); 
+        Double datoUno = Double.parseDouble(numeroUno); 
        if (datoUno < 0) {
         return "Error";
     }
