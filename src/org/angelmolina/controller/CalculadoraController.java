@@ -32,9 +32,14 @@ public class CalculadoraController {
 
  
             actualizarPantalla(pantalla);        
-        }else if(entrada.equals("+") || entrada.equals("-") || entrada.equals("*") || entrada.equals("÷")) {
+        }else if(entrada.equals("+") || entrada.equals("-") || entrada.equals("*") || entrada.equals("÷")  || entrada.equals("x²") || entrada.equals("√")) {
             operador = entrada; 
-            actualizarPantalla(pantalla);  
+            if (entrada.equals("x²")) {
+                operador = "²";
+            } else {
+                operador = entrada; 
+            }
+            actualizarPantalla(pantalla);        
         }else if(entrada.equals("=")) {
             if(operador.equals("+")) {                  
                 opcion1 = resultadoSuma(opcion1, opcion2);  
@@ -46,6 +51,12 @@ public class CalculadoraController {
             
                 } else if (operador.equals("÷")) {
             opcion1 = resultadoDivision(opcion1, opcion2);
+            
+                } else if (operador.equals("²")) {
+            opcion1 = resultadoPotencia(opcion1,opcion2);
+            
+                } else if (operador.equals("√")) {
+            opcion1 = resultadoRaiz(opcion1,opcion2);
         }
                 operador = "";
                 opcion2 = "";
@@ -99,6 +110,24 @@ public class CalculadoraController {
         }
         double division = datoUno / datoDos;         
         return resultado = String.valueOf(division);
+        
+    }
+    private String resultadoPotencia(String numeroUno, String numeroDos) {
+        String resultado; 
+        int datoUno = Integer.parseInt(numeroUno); 
+       
+        int potencia = datoUno *  datoUno;         
+        return resultado = String.valueOf(potencia);
+        
+    }
+    private String resultadoRaiz(String numeroUno, String numeroDos) {
+        String resultado; 
+        int datoUno = Integer.parseInt(numeroUno); 
+       if (datoUno < 0) {
+        return "Error";
+    }
+     double raiz = Math.sqrt(datoUno);         
+     return resultado =  String.valueOf(raiz);
         
     }
    

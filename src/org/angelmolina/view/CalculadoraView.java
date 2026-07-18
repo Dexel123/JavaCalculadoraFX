@@ -1,6 +1,5 @@
 package org.angelmolina.view;
  
-import java.util.Scanner;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
