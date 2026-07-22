@@ -23,4 +23,4 @@ org.angelmolina
     - presente la estructura de su codigo.
 
 -- ENLACE
-https://cetkinal.sharepoint.com/:f:/s/IN4CM26/IgB66yrDZ-8ISaBNkdmH4f37ATBN8eg1tB9iDaGraOgxgXY?e=0RloMV
+https://cetkinal-my.sharepoint.com/:v:/g/personal/amolina-2026053_kinal_edu_gt/IQAJCGzISaf7TIlgeQvUaMaMAftz1J8xgNWnAkfpQ6rHxKw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=IcMLJD
